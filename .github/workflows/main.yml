@@ -18,3 +18,20 @@ jobs:
 
       - name: Run CI Test
         run: echo "CI Pipeline executed successfully!"
+        steps:
+  - uses: actions/checkout@v4
+
+  - name: Set up Java
+    uses: actions/setup-java@v4
+    with:
+      java-version: '21'
+      distribution: 'temurin'
+
+  - name: Build with Maven
+    run: mvn -B package --file pom.xml
+
+  - name: Upload JAR file
+    uses: actions/upload-artifact@v3
+    with:
+      name: maven-jar
+      path: target/*.jar
