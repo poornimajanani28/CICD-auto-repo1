@@ -19,10 +19,10 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Build with Maven
+      - name: Build
         run: mvn compile
 
-      - name: Run Tests
+      - name: Test
         run: mvn test
 
       - name: Package JAR
